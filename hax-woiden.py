@@ -180,8 +180,3 @@ def thread_check(signal_handler):
 
 if __name__ == '__main__':
     thread_check(signal_handler)
-
-'''
-后台运行记录日志命令
-nohup python3 -u hax-woiden.py > bot.log 2>&1 &
-'''
