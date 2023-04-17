@@ -21,42 +21,48 @@ def Hax():
         "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     }
-    resp = requests.get(url=url, headers=headers)
-    html_content = resp.content.decode('UTF-8')
-
-    soup = BeautifulSoup(html_content, 'html.parser')
     try:
-        el = soup.find(id = "datacenter")
-        option = el.find_all('option')
-        res = []
-        for i in option:
-            if i.text != '-select-':
-                res.append(i.text)
-        return res
+        resp = requests.get(url=url, headers=headers)
+        html_content = resp.content.decode('UTF-8')
+
+        soup = BeautifulSoup(html_content, 'html.parser')
+        try:
+            el = soup.find(id = "datacenter")
+            option = el.find_all('option')
+            res = []
+            for i in option:
+                if i.text != '-select-':
+                    res.append(i.text)
+            return res
+        except:
+            # print(f'当前时间{datetime.datetime.now()} ==== Hax请求错误')
+            return []
     except:
-        print(f'当前时间{datetime.datetime.now()} ==== Hax请求错误')
-        return []
+        pass
 def Woiden():
     url = "https://woiden.id/create-vps/"
     headers = {
         "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     }
-    resp = requests.get(url=url, headers=headers)
-    html_content = resp.content.decode('UTF-8')
-
-    soup = BeautifulSoup(html_content, 'html.parser')
     try:
-        el = soup.find(id = "datacenter")
-        option = el.find_all('option')
-        res = []
-        for i in option:
-            if i.text != '-select-':
-                res.append(i.text)
-        return res
+        resp = requests.get(url=url, headers=headers)
+        html_content = resp.content.decode('UTF-8')
+
+        soup = BeautifulSoup(html_content, 'html.parser')
+        try:
+            el = soup.find(id = "datacenter")
+            option = el.find_all('option')
+            res = []
+            for i in option:
+                if i.text != '-select-':
+                    res.append(i.text)
+            return res
+        except:
+            # print(f'当前时间:{datetime.datetime.now()} \n Woiden请求错误(网络请求频繁,正常情况)')
+            return []
     except:
-        print(f'当前时间:{datetime.datetime.now()} \n Woiden请求错误(网络请求频繁,正常情况)')
-        return []
+        pass
 def checkHax():
     send('Hax监控启动...')
     print('Hax监控启动...')
@@ -163,7 +169,8 @@ def send(msg):
         tg(msg)
         mail(msg)
     else:
-        print('未启用发送媒介')
+        pass
+        # print('未启用发送媒介')
 # 正常结束进程
 def signal_handler(sig, frame):
     lock = threading.Lock()

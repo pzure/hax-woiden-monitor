@@ -39,23 +39,24 @@ def VC():
         'upgrade-insecure-requests': '1',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
     }
-
-    resp = requests.get(url, headers=headers)
-    html_content = resp.content.decode('UTF-8')
-
-    soup = BeautifulSoup(html_content, 'html.parser')
     try:
-        el = soup.find(id = "datacenter")
-        option = el.find_all('option')
-        res = []
-        for i in option:
-            if i.text != '-select-':
-                res.append(i.text)
-        return res
-    except:
-        print(f'当前时间:{datetime.datetime.now()} \n VC请求错误(网络请求频繁,正常情况,注意检查cookie填写是否正常)')
-        return []
+        resp = requests.get(url, headers=headers)
+        html_content = resp.content.decode('UTF-8')
 
+        soup = BeautifulSoup(html_content, 'html.parser')
+        try:
+            el = soup.find(id = "datacenter")
+            option = el.find_all('option')
+            res = []
+            for i in option:
+                if i.text != '-select-':
+                    res.append(i.text)
+            return res
+        except:
+            # print(f'当前时间:{datetime.datetime.now()} \n VC请求错误(网络请求频繁,正常情况,注意检查cookie填写是否正常)')
+            return []
+    except:
+        pass
 def checkVC():
     send('VC监控启动...')
     print('VC监控启动...')
