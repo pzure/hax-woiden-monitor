@@ -4,7 +4,6 @@
 
 删除无效告警，网络错误，程序阻断问题解决
 
-
 hax监控基于Python3
 
 ##食用方法：
@@ -64,5 +63,5 @@ hax监控基于Python3
   #直接启动
   python3 vc.py
   #后台运行,记录日志(日志记录在当前目录的bot_vc.log中)
-  nohup python3 -u hax-woiden.py > bot_vc.log 2>&1 &
+  nohup python3 -u vc.py > bot_vc.log 2>&1 &
   ```
