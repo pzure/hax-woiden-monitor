@@ -35,10 +35,10 @@ def Hax():
                     res.append(i.text)
             return res
         except:
-            # print(f'当前时间{datetime.datetime.now()} ==== Hax请求错误')
             return []
     except:
-        pass
+        print ('网络异常，请求失败')
+        return []
 def Woiden():
     url = "https://woiden.id/create-vps/"
     headers = {
@@ -59,10 +59,10 @@ def Woiden():
                     res.append(i.text)
             return res
         except:
-            # print(f'当前时间:{datetime.datetime.now()} \n Woiden请求错误(网络请求频繁,正常情况)')
             return []
     except:
-        pass
+        print ('网络异常，请求失败')
+        return []
 def checkHax():
     send('Hax监控启动...')
     print('Hax监控启动...')

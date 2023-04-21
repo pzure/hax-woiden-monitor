@@ -56,7 +56,7 @@ def VC():
             # print(f'当前时间:{datetime.datetime.now()} \n VC请求错误(网络请求频繁,正常情况,注意检查cookie填写是否正常)')
             return []
     except:
-        pass
+        return []
 def checkVC():
     send('VC监控启动...')
     print('VC监控启动...')
